@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Node Twitter Authentication
+  if !user           
+    p Login with twitter:
+    a(href="/auth/twitter", class="btn btn-default")
+      i.i.ion-social-twitter.left
+      |Login

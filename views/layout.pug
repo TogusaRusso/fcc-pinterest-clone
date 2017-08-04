@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Node Authentication
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css', rel='stylesheet', media='screen')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel='stylesheet')
+    link(href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', rel='stylesheet')
+  body
+    nav
+      .nav-wrapper
+        a.brand-logo(href="/") Home
+        ul.right.hide-on-med-and-down#nav-mobile
+          if !user
+            li 
+              a(href='/auth/twitter') 
+                i.ion-social-twitter.left
+                |Login 
+          if user
+            li 
+              a(href='/profile')
+                i.ion-social-twitter.left
+                =user.twitter.username
+            li
+              a(href='/logout') 
+                i.ion-log-out.left 
+                |Logout
+    .container
+      block content
+
+  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js')
