@@ -7,7 +7,7 @@ block content
     each picture in pictures
       .grid-item
         div
-          img.responsive-img(src=picture.url)
+          img.responsive-img(src=picture.url, onerror="this.src='broken.png'")
           h5= picture.title
           a(href='/wall/'+picture.user._id) Posted by 
             =picture.user.twitter.displayName
