@@ -1,15 +1,23 @@
 doctype html
 html
   head
-    title Node Authentication
+    title FCC Pinterest Clone 
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css', rel='stylesheet', media='screen')
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel='stylesheet')
     link(href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', rel='stylesheet')
+    style.
+      .grid-item {
+        float: left;
+        border: 2px solid hsla(0, 0%, 0%, 0.5);
+        border-radius: 10px;
+        width: 200px;
+        padding: 10px;
+      }
   body
     nav
       .nav-wrapper
-        a.brand-logo(href="/") Home
+        a.brand-logo(href="/") FCCnterest
         ul.right.hide-on-med-and-down#nav-mobile
           if !user
             li 
@@ -17,6 +25,12 @@ html
                 i.ion-social-twitter.left
                 |Login 
           if user
+            li
+              a.btn(href='/new')
+                i.material-icons.medium.left add
+                |New picture
+            li 
+              a(href='/wall/' + user._id) MY WALL
             li 
               a(href='/profile')
                 i.ion-social-twitter.left
@@ -30,3 +44,13 @@ html
 
   script(src='https://code.jquery.com/jquery-3.2.1.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.0/masonry.pkgd.min.js')
+  script.
+    $(() => {
+      $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200
+      })
+      $('img').one('error', function() { this.src = 'broken.png' })
+    })

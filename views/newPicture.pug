@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1
+    i.material-icons.medium.left add
+    |New picture
+  //- SIGNUP FORM 
+  form(action="/new", method="post")
+    .row
+      .input-field.col.s12
+        input#name(name="title", type="text")
+        label(for='title') Title of the picture
+    .row
+      .input-field.col.s12
+        input#imgUrl(name="url", type="text")
+        label(for='url') Url of the picture
+    button.waves-effect.waves-light.btn(type="submit") Add

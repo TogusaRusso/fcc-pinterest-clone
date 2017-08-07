@@ -4,7 +4,6 @@ const app = express()
 const port = process.env.PORT || 8080
 const mongoose = require('mongoose')
 const passport = require('passport')
-const flash = require('connect-flash')
 
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
@@ -34,8 +33,6 @@ app.use(session({ secret: 'ilovescotchscotchyscotchsnotch' }))
 app.use(passport.initialize())
 // persistent login sessions
 app.use(passport.session())
-// use connect-flash for flash messages stored in session
-app.use(flash())
 
 // routes
 // load our routes and pass in our app and fully configured passport
